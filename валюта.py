@@ -21,6 +21,11 @@ def update_base_label(event):
     base_label.config(text=name)
 
 
+def update_base2_label(event):
+    code = base2_combobox.get()
+    name = currencies[code]
+    base2_label.config(text=name)
+
 def exchange():
     target_code = target_combobox.get().strip()
     base_code = base_combobox.get().strip()
@@ -61,12 +66,12 @@ currencies = {
     'RUB': 'Российский рубль',
     'KZT': 'Казахстанский тенге',
     'UZS': 'Узбекский сум'
-
 }
+
 
 root = Tk()
 root.title('Курс обмена валют USD')
-root.geometry('360x180')
+root.geometry('360x240')
 
 Label(root, text='Базовая валюта').pack()
 base_combobox = ttk.Combobox(root, values=list(currencies.keys()))
@@ -74,6 +79,15 @@ base_combobox.pack(pady=3, padx=10)
 base_combobox.bind('<<ComboboxSelected>>', update_base_label)
 base_label = ttk.Label()
 base_label.pack()
+
+
+Label(root, text='Вторая базовая валюта').pack()
+base2_combobox = ttk.Combobox(root, values=list(currencies.keys()))
+base2_combobox.pack(pady=3, padx=10)
+base2_combobox.bind('<<ComboboxSelected>>', update_base2_label)
+base2_label = ttk.Label()
+base2_label.pack()
+
 
 Label(root, text='Целевая валюта' ).pack(padx=10)
 # popular_currencies = ['EUR', 'JPY', 'GBP', 'AUD', 'CAD', 'CHF',
