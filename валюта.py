@@ -26,6 +26,7 @@ def update_base2_label(event):
     name = currencies[code]
     base2_label.config(text=name)
 
+
 def exchange():
     target_code = target_combobox.get().strip()
     base_code = base_combobox.get().strip()
@@ -89,7 +90,6 @@ base_combobox.bind('<<ComboboxSelected>>', update_base_label)
 base_label = ttk.Label()
 base_label.pack()
 
-
 Label(root, text='Вторая базовая валюта').pack()
 base2_combobox = ttk.Combobox(root, values=list(currencies.keys()))
 base2_combobox.pack(pady=3, padx=10)
@@ -97,24 +97,21 @@ base2_combobox.bind('<<ComboboxSelected>>', update_base2_label)
 base2_label = ttk.Label()
 base2_label.pack()
 
-
 Label(root, text='Целевая валюта' ).pack(padx=10)
-# popular_currencies = ['EUR', 'JPY', 'GBP', 'AUD', 'CAD', 'CHF',
-#                       'CNY', 'RUB', 'KZT', 'UZS']
 target_combobox = ttk.Combobox(root, values=list(currencies.keys()))
 target_combobox.pack(pady=3, padx=10)
 target_combobox.bind('<<ComboboxSelected>>', update_currency_label)
 
 target_label = ttk.Label()
 target_label.pack()
-# entry = Entry(root)
-# entry.pack()
+
 
 Button(text='Получить курс обмена',
        command=exchange).pack(pady=10, padx=10)
 
 
 root.mainloop()
+
 # p = pprint.PrettyPrinter(indent=4)
 # result = requests.get('https://open.er-api.com/v6/latest/USD')
 # data = json.loads(result.text)
