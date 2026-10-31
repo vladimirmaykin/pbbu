@@ -29,26 +29,35 @@ def update_base2_label(event):
 def exchange():
     target_code = target_combobox.get().strip()
     base_code = base_combobox.get().strip()
-    # code = entry.get().upper().strip()
-    # code = combobox.get()
-    if target_code and base_code:
+    base2_code = base2_combobox.get().strip()
+
+    if target_code and base_code and base2_code:
         try:
 
-            response = requests.get(f'https://open.er-api.com/v6/latest/{base_code}')
-            response.raise_for_status()
-            data = response.json()
-            if target_code in data['rates']:
-                exchange_rate = data['rates'][target_code]
-                base = currencies[base_code]
+            response1 = requests.get(f'https://open.er-api.com/v6/latest/{base_code}')
+            response1.raise_for_status()
+            data1 = response1.json()
+
+            response2 = requests.get(f'https://open.er-api.com/v6/latest/{base2_code}')
+            response2.raise_for_status()
+            data2 = response2.json()
+
+            if target_code in data1['rates'] and target_code in data2['rates']:
+                exchange_rate1 = data1['rates'][target_code]
+                base1 = currencies[base_code]
+
+                exchange_rate2 = data1['rates'][target_code]
+                base2 = currencies[base2_code]
+
                 target = currencies[target_code]
-                # currency_name = currencies[code]
                 mb.showinfo('Курс обмена',
-                            f'Курс: {exchange_rate:.1f} {target} за 1 {base}')
+                            f'Курс: {exchange_rate1:.1f} {target} за 1 {base1},\n'
+                            f'Курс: {exchange_rate2:.1f} {target} за 1 {base2}')
             else:
                 mb.showerror('Ошибка',
                             f'Валюта {target_code} не найдена')
         except Exception as er:
-            mb.showerror('Ошибка', er)
+            mb.showerror('Ошибка', f'Ошибка: {er}')
 
     else:
         mb.showwarning('Внимание', 'Введите код валюты')
