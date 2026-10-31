@@ -2,10 +2,6 @@ from tkinter import *
 from tkinter import messagebox as mb
 from tkinter import ttk
 import requests
-import json
-import pprint
-
-from bottle import response
 
 
 def update_currency_label(event):
@@ -47,7 +43,7 @@ def exchange():
                 exchange_rate1 = data1['rates'][target_code]
                 base1 = currencies[base_code]
 
-                exchange_rate2 = data1['rates'][target_code]
+                exchange_rate2 = data2['rates'][target_code]
                 base2 = currencies[base2_code]
 
                 target = currencies[target_code]
