@@ -74,7 +74,6 @@ currencies = {
     'UZS': 'Узбекский сум'
 }
 
-
 root = Tk()
 root.title('Курс обмена валют USD')
 root.geometry('360x240')
