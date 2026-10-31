@@ -101,7 +101,7 @@ target_label.pack()
 # entry = Entry(root)
 # entry.pack()
 
-Button(text='Получить курс обмена к доллару',
+Button(text='Получить курс обмена',
        command=exchange).pack(pady=10, padx=10)
 
 
