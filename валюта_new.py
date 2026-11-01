@@ -100,10 +100,8 @@ target_combobox.bind('<<ComboboxSelected>>', update_currency_label)
 target_label = ttk.Label()
 target_label.pack()
 
-
 Button(text='Получить курс обмена',
        command=exchange).pack(pady=10, padx=10)
-
 
 root.mainloop()
 
