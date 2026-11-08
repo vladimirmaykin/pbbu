@@ -3,7 +3,7 @@ from tkinter import ttk, filedialog
 import requests
 import threading
 import time
-import csv  # Добавлен импорт для работы с CSV
+import csv
 
 
 class CryptoTrackerApp:
