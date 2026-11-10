@@ -14,20 +14,20 @@ def update_base_label(event):
     code = base_combobox.get()
     name = currencies[code]
     base_label.config(text=name)
-    coins.clear()
-    coins.append(code)
 
 
 def exchange():
     target_code = target_combobox.get().strip()
     base_code = base_combobox.get().strip()
+    coins.clear()
+    coins.append(base_code)
     if target_code and base_code:
         try:
 
             # Используем endpoint /coins/markets для получения цен и процентов
             url = "https://api.coingecko.com/api/v3/coins/markets"
             params = {
-                'vs_currency': 'usd',
+                'vs_currency': target_code,
                 'ids': ','.join(coins),
                 'order': 'market_cap_desc',
                 'per_page': len(coins),
@@ -93,7 +93,3 @@ Button(text='Получить курс обмена к доллару',
 
 
 root.mainloop()
-# p = pprint.PrettyPrinter(indent=4)
-# result = requests.get('https://open.er-api.com/v6/latest/USD')
-# data = json.loads(result.text)
-# p.pprint(data)
