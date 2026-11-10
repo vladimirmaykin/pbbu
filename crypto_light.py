@@ -27,11 +27,7 @@ def exchange():
             url = "https://api.coingecko.com/api/v3/coins/markets"
             params = {
                 'vs_currency': target_code,
-                'ids': ','.join(coins),
-                'order': 'market_cap_desc',
-                'per_page': len(coins),
-                'page': 1,
-                'sparkline': 'false'
+                'ids': ','.join(coins)
             }
             # Устанавливаем таймаут, чтобы приложение не зависало при проблемах с сетью
             response = requests.get(url, params=params, timeout=10)
