@@ -31,8 +31,7 @@ def exchange():
                 'order': 'market_cap_desc',
                 'per_page': len(coins),
                 'page': 1,
-                'sparkline': 'false',
-                'price_change_percentage': '24h'
+                'sparkline': 'false'
             }
             # Устанавливаем таймаут, чтобы приложение не зависало при проблемах с сетью
             response = requests.get(url, params=params, timeout=10)
