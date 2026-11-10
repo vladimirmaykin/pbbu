@@ -23,8 +23,7 @@ def exchange():
     coins.append(base_code)
     if target_code and base_code:
         try:
-
-            # Используем endpoint /coins/markets для получения цен и процентов
+            # Используем endpoint /coins/markets для получения цен
             url = "https://api.coingecko.com/api/v3/coins/markets"
             params = {
                 'vs_currency': target_code,
@@ -90,6 +89,5 @@ target_label.pack()
 
 Button(text='Получить курс обмена к доллару',
        command=exchange).pack(pady=10, padx=10)
-
 
 root.mainloop()
